@@ -141,6 +141,7 @@ li {
 .card_title {
   font-weight: 600;
   padding: 10px;
+  text-transform: uppercase;
 }
 
 .card_race {
