@@ -23,9 +23,6 @@ const kittenOne = `<li class="card">
 </li>`;
 
 
-catList.innerHTML = kittenOne;
-
-
 const kittenTwoImage = "https://dev.adalab.es/sphynx-gato.webp";
 const kittenTwoName = 'Fiona';
 const kittenTwoDesc = 'Produce fascinación y curiosidad. Exótico, raro, bello, extraño...hasta con pinta de alienígena han llegado a definir a esta raza gatuna que se caracteriza por la «ausencia» de pelo';
@@ -42,7 +39,7 @@ const kittenTwo = `<li class="card">
 <p class="card_description"> ${kittenTwoDesc}</p>
 </li>`;
 
-catList.innerHTML += kittenTwo;
+
 
 const kittenThreeImage = "https://dev.adalab.es/maine-coon-cat.webp";
 const kittenThreeName = 'Cielo';
@@ -60,7 +57,7 @@ const kittenThree = `<li class="card">
 <p class="card_description"> ${kittenThreeDesc}</p>
 </li>`;
 
-catList.innerHTML += kittenThree;
+
 
 // Fitro de búsqueda de la descripción
 
@@ -69,18 +66,62 @@ const input_search_desc = document.querySelector('.js_in_search_desc');
 const descrSearchText = input_search_desc.value;
 
 if( kittenDesc.includes(descrSearchText) ) {
-  catList.innerHTML = kittenOne;
+  catList.innerHTML += kittenOne;
 }
 
 if( kittenTwoDesc.includes(descrSearchText) ) {
- catList.innerHTML = kittenTwo;
+ catList.innerHTML += kittenTwo;
 }
 
 if( kittenThreeDesc.includes(descrSearchText) ) {
- catList.innerHTML = kittenThree;
+ catList.innerHTML += kittenThree;
 }
 
 // Validar la información de la raza
 
-const razaSearchText = js_in_search_raza.value;
+// const razaSearchText = js_in_search_raza.value;
+
+// Mostrar/ocultar el formulario
+
+const newForm = document.querySelector ('.js-new-form'); //formulario
+
+const  buttonPlus = document.querySelector(".js-plus"); //botón
+
+buttonPlus.addEventListener('click', (event) => {
+if (newForm.classList.contains('collapsed')) {
+  newForm.classList.remove('collapsed');
+  
+} else {
+  newForm.classList.add('collapsed');
+}
+
+})
+
+// Adicionar nuevo gatito
+
+const inputDesc = document.querySelector('.js-input-desc');
+const inputPhoto = document.querySelector('.js-input-photo');
+const inputName = document.querySelector('.js-input-name');
+const labelMessageError = document.querySelector('.js-label-error');
+
+
+
+const btmAdd = document.querySelector ('.js-btn-add');
+
+btmAdd.addEventListener('click', (event) => {
+  event.preventDefault();
+  const valueDesc = inputDesc.value;
+  const valuePhoto = inputPhoto.value;
+  const valueName = inputName.value;
+
+  if (valueDesc === '' || valuePhoto === '' || valueName === '') {
+    labelMessageError.innerHTML = '¡Uy! parece que has olvidado algo.';
+  } 
+  
+  else {
+    labelMessageError.innerHTML = `Todo correcto`;
+  }
+
+
+})
 
