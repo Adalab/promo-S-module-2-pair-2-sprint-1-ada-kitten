@@ -89,13 +89,21 @@ const  buttonPlus = document.querySelector(".js-plus"); //botón
 
 buttonPlus.addEventListener('click', (event) => {
 if (newForm.classList.contains('collapsed')) {
-  newForm.classList.remove('collapsed');
+  showNewCatForm();
   
 } else {
-  newForm.classList.add('collapsed');
+  hideNewCatForm();
 }
 
 })
+
+function showNewCatForm() {
+  newForm.classList.remove('collapsed');
+}
+function hideNewCatForm() {
+  newForm.classList.add('collapsed');
+}
+
 
 // Adicionar nuevo gatito
 
@@ -123,5 +131,19 @@ btmAdd.addEventListener('click', (event) => {
   }
 
 
+})
+
+
+/* Cancelar formulario */
+
+const buttonCancel = document.querySelector ('.js-button-cancel');
+const inputRace = document.querySelector ('.js-input-race')
+
+buttonCancel.addEventListener ('click', (event) => {
+    hideNewCatForm()
+    inputName.value = '';
+    inputDesc.value = '';
+    inputPhoto.value = '';
+    inputRace.value = '';
 })
 
