@@ -110,14 +110,34 @@ function hideNewCatForm() {
 const inputDesc = document.querySelector('.js-input-desc');
 const inputPhoto = document.querySelector('.js-input-photo');
 const inputName = document.querySelector('.js-input-name');
+const inputRace = document.querySelector('.js-input-race');
 const labelMessageError = document.querySelector('.js-label-error');
+const btnAdd = document.querySelector ('.js-btn-add');
 
 
+function renderKitten(url, desc, name, race) {
+ url = inputPhoto.value;
+ desc = inputDesc.value;
+ name = inputName.value;
+ race = inputRace.value;
 
-const btmAdd = document.querySelector ('.js-btn-add');
+return catList.innerHTML +=  `<li class="card">
+<img 
+  class="card_img" 
+  src="${url}" 
+  alt="siames-cat"
+/>
+<h3 class="card_title"> ${name}</h3>
+<h4 class="card_race"> ${race}</h4>
+<p class="card_description"> ${desc}</p>
+</li>`;
+}
 
-btmAdd.addEventListener('click', (event) => {
-  event.preventDefault();
+
+btnAdd.addEventListener('click', addNewKitten);
+
+function addNewKitten(event) {
+    event.preventDefault();
   const valueDesc = inputDesc.value;
   const valuePhoto = inputPhoto.value;
   const valueName = inputName.value;
@@ -128,16 +148,18 @@ btmAdd.addEventListener('click', (event) => {
   
   else {
     labelMessageError.innerHTML = `Todo correcto`;
+    renderKitten();
   }
 
+}
 
-})
+
+
 
 
 /* Cancelar formulario */
 
 const buttonCancel = document.querySelector ('.js-button-cancel');
-const inputRace = document.querySelector ('.js-input-race')
 
 buttonCancel.addEventListener ('click', (event) => {
     hideNewCatForm()
@@ -146,4 +168,7 @@ buttonCancel.addEventListener ('click', (event) => {
     inputPhoto.value = '';
     inputRace.value = '';
 })
+
+//Añadir nuevo gatito desde botón Añaddir
+
 
