@@ -60,22 +60,32 @@ const kittenThree = `<li class="card">
 
 
 // Fitro de búsqueda de la descripción
+catList.innerHTML += kittenOne;
+catList.innerHTML += kittenTwo
+catList.innerHTML += kittenThree
 
 const input_search_desc = document.querySelector('.js_in_search_desc');
+const input_search_race = document.querySelector('js_in_search_raza');
+const buttonSearch = document.querySelector('.js-button-search');
 
-const descrSearchText = input_search_desc.value;
-
-if( kittenDesc.includes(descrSearchText) ) {
-  catList.innerHTML += kittenOne;
+const filterKitten = (event) => {
+  event.preventDefault();
+  catList.innerHTML = '';
+  const descrSearchText = input_search_desc.value;
+  const raceSearchText = input_search_race.value;
+  console.log(descrSearchText)
+  if (kittenDesc.includes(descrSearchText) || kittenDesc.includes(descrSearchText) )  {
+    catList.innerHTML += kittenOne;
+  }
+  if (kittenTwoDesc.includes(descrSearchText)) {
+    catList.innerHTML += kittenTwo;
+  }
+  if (kittenThreeDesc.includes(descrSearchText)) {
+    catList.innerHTML += kittenThree;
+  }
 }
 
-if( kittenTwoDesc.includes(descrSearchText) ) {
- catList.innerHTML += kittenTwo;
-}
-
-if( kittenThreeDesc.includes(descrSearchText) ) {
- catList.innerHTML += kittenThree;
-}
+buttonSearch.addEventListener('click', filterKitten);
 
 // Validar la información de la raza
 
@@ -161,14 +171,16 @@ function addNewKitten(event) {
 
 const buttonCancel = document.querySelector ('.js-button-cancel');
 
-buttonCancel.addEventListener ('click', (event) => {
+const cancelNewKitten = (event) => {
     hideNewCatForm()
     inputName.value = '';
     inputDesc.value = '';
     inputPhoto.value = '';
     inputRace.value = '';
-})
+}
 
-//Añadir nuevo gatito desde botón Añaddir
+buttonCancel.addEventListener('click', cancelNewKitten);
+
+
 
 
